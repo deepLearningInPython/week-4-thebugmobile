@@ -99,12 +99,9 @@ print(word_frequencies)
 # Your code here:
 # -----------------------------------------------
 def token_counts(string: str, k: int = 1) -> dict:
-    # Tokenize the string into words and convert generator to a list
     tokens = list(tokenize(string))
-    # Count token frequencies
-    token_frequencies = {token: tokens.count(token) for token in set(tokens)}
-    # Filter tokens with frequency greater than k
-    return {token: count for token, count in token_frequencies.items() if count > k}
+    tokencount, counts =  np.unique(tokens, return_counts=True)
+    return {token: count for token, count in zip(tokencount, counts) if count >= k}
 
 
 
